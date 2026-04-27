@@ -12,12 +12,12 @@ const LoginPage = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log({ data, errors });
     // login
     const { data: res, error } = await authClient.signIn.email({
       ...data,
       callbackURL: "/",
     });
+    console.log("login submit", { res, error });
     if (error) return toast.error(error.message);
     toast.success(`Welcome ${data.name}`);
   };
